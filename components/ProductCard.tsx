@@ -105,8 +105,9 @@ export default function ProductCard({ product }: ProductCardProps) {
             <button
               onClick={handleAddToCart}
               disabled={product.stock_quantity <= 0}
-              className="p-2 bg-red-600 text-white rounded-full hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition"
-              aria-label="Add to cart"
+              className="p-2 bg-red-600 text-white rounded-full hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition group-hover:scale-110"
+              aria-label="Quick add to cart"
+              title="Quick add to cart"
             >
               <ShoppingCart className="h-5 w-5" />
             </button>

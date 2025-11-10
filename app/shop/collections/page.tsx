@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Collection } from '@/types';
 import { Heart, Sparkles } from 'lucide-react';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 // Main collections based on brand
 const collections: Collection[] = [
@@ -40,6 +41,12 @@ const collections: Collection[] = [
 export default function CollectionsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Breadcrumbs */}
+      <Breadcrumbs items={[
+        { label: 'Shop', href: '/shop' },
+        { label: 'Collections' }
+      ]} />
+
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Collections</h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">

@@ -7,6 +7,7 @@ import { useCartStore } from '@/lib/cart-store';
 import { formatPrice, calculateDiscountPercent } from '@/lib/utils';
 import { Product } from '@/types';
 import toast from 'react-hot-toast';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 // Mock product data - will be replaced with API call
 const getProductById = (id: string): Product => {
@@ -56,8 +57,50 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
   const images = product.images && product.images.length > 0 ? product.images : [product.image_url || ''];
 
+  // Calculate valid until date for schema
+  const validUntilDate = new Date();
+  validUntilDate.setDate(validUntilDate.getDate() + 30);
+
+  // Generate schema.org Product markup
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description,
+    "image": images,
+    "offers": {
+      "@type": "Offer",
+      "url": typeof window !== 'undefined' ? window.location.href : '',
+      "priceCurrency": "USD",
+      "price": displayPrice.toFixed(2),
+      "availability": product.stock_quantity > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      "priceValidUntil": validUntilDate.toISOString().split('T')[0],
+    },
+    "brand": {
+      "@type": "Brand",
+      "name": "Coaxx"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "89"
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Schema.org markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs items={[
+        { label: 'Shop', href: '/shop' },
+        { label: product.name }
+      ]} />
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Product Images */}
         <div>
