@@ -184,6 +184,22 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             </button>
           </div>
 
+          {/* Discreet Shipping Note */}
+          <div className="border-t border-gray-200 pt-6 mb-6">
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                Discreet Shipping & Billing
+              </h3>
+              <p className="text-sm text-gray-600">
+                All orders ship in plain, unmarked packaging. Your billing statement will show a discreet descriptor. 
+                Your privacy is our priority.
+              </p>
+            </div>
+          </div>
+
           {/* Features */}
           <div className="border-t border-gray-200 pt-6">
             <h3 className="font-semibold text-gray-900 mb-3">Features</h3>
@@ -195,9 +211,53 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 <span className="text-red-600">✓</span> 30-day money-back guarantee
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-red-600">✓</span> 1-year warranty included
+                <span className="text-red-600">✓</span> Body-safe, premium materials
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Product Details Tabs */}
+      <div className="mt-16 border-t border-gray-200 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Specifications</h3>
+            <ul className="space-y-2 text-gray-700">
+              <li className="flex justify-between border-b border-gray-200 pb-2">
+                <span className="font-medium">Material:</span>
+                <span>Premium blend</span>
+              </li>
+              <li className="flex justify-between border-b border-gray-200 pb-2">
+                <span className="font-medium">Care:</span>
+                <span>Hand wash cold</span>
+              </li>
+              <li className="flex justify-between border-b border-gray-200 pb-2">
+                <span className="font-medium">Origin:</span>
+                <span>Imported</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Care Instructions</h3>
+            <ul className="space-y-2 text-gray-700">
+              <li>• Hand wash in cold water</li>
+              <li>• Use mild detergent</li>
+              <li>• Do not bleach</li>
+              <li>• Lay flat to dry</li>
+              <li>• Do not iron</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Size Guide</h3>
+            <p className="text-gray-700 mb-3">
+              Find your perfect fit with our comprehensive size guide.
+            </p>
+            <button className="text-red-600 hover:text-red-700 font-semibold">
+              View Size Guide →
+            </button>
           </div>
         </div>
       </div>
