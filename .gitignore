@@ -6,7 +6,7 @@ Thumbs.db
 
 # Editor directories
 .vscode/
-.idea/
+.idea/ 
 *.swp
 *.swo
 *~
