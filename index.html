@@ -11,6 +11,27 @@
   <script src="app.js" defer></script>
 </head>
 <body>
+  <!-- Under Construction Modal -->
+  <div id="construction-gate" class="construction-gate">
+    <div class="construction-gate-content">
+      <div class="construction-icon">🚧</div>
+      <h2>Under Construction</h2>
+      <p>We're putting the finishing touches on something special. Enter the password to preview the site.</p>
+      <form id="construction-form" class="construction-password-form">
+        <input 
+          type="password" 
+          id="construction-password" 
+          class="construction-password-input" 
+          placeholder="Enter Password" 
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="construction-submit-btn">Enter Site</button>
+      </form>
+      <div id="construction-error" class="construction-error">Incorrect password. Please try again.</div>
+    </div>
+  </div>
+
   <!-- Age Gate Modal -->
   <div id="age-gate" class="age-gate">
     <div class="age-gate-content">
