@@ -146,6 +146,56 @@ async function loadProducts() {
   }
 }
 
+// ===== UNDER CONSTRUCTION GATE =====
+function initConstructionGate() {
+  const constructionPassed = localStorage.getItem('coaxx_construction_passed');
+  const constructionGate = document.getElementById('construction-gate');
+  const constructionForm = document.getElementById('construction-form');
+  const constructionError = document.getElementById('construction-error');
+  const CONSTRUCTION_PASSWORD = 'ataymiadagoat';
+  
+  if (!constructionPassed && constructionGate) {
+    constructionGate.classList.add('show');
+    
+    // Blur the background
+    const main = document.querySelector('main');
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+    if (main) main.classList.add('construction-blur-bg');
+    if (header) header.classList.add('construction-blur-bg');
+    if (footer) footer.classList.add('construction-blur-bg');
+    
+    constructionForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const passwordInput = document.getElementById('construction-password');
+      const password = passwordInput.value;
+      
+      if (password === CONSTRUCTION_PASSWORD) {
+        localStorage.setItem('coaxx_construction_passed', 'true');
+        constructionGate.classList.remove('show');
+        
+        // Remove blur
+        if (main) main.classList.remove('construction-blur-bg');
+        if (header) header.classList.remove('construction-blur-bg');
+        if (footer) footer.classList.remove('construction-blur-bg');
+        
+        // Show success toast
+        showToast('Access granted! Welcome to Coaxx.', 'success');
+      } else {
+        // Show error
+        constructionError?.classList.add('show');
+        passwordInput.value = '';
+        passwordInput.focus();
+        
+        // Hide error after 3 seconds
+        setTimeout(() => {
+          constructionError?.classList.remove('show');
+        }, 3000);
+      }
+    });
+  }
+}
+
 // ===== AGE GATE =====
 function initAgeGate() {
   const ageConfirmed = localStorage.getItem('coaxx_age_confirmed');
@@ -407,6 +457,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   cart = new CartStore();
   
   // Initialize components
+  initConstructionGate();
   initAgeGate();
   initMobileMenu();
   initSearch();

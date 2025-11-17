@@ -300,6 +300,134 @@ footer {
   color: #9ca3af;
 }
 
+/* Under Construction Modal */
+.construction-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.construction-gate.show {
+  display: flex;
+}
+
+.construction-gate-content {
+  background: linear-gradient(135deg, #111827 0%, #581c87 50%, #dc2626 100%);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  max-width: 36rem;
+  width: 100%;
+  padding: 3rem 2rem;
+  text-align: center;
+  border: 2px solid rgba(220, 38, 38, 0.3);
+}
+
+.construction-icon {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.construction-gate h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.construction-gate p {
+  color: #d1d5db;
+  margin-bottom: 2rem;
+  line-height: 1.75;
+  font-size: 1.125rem;
+}
+
+.construction-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.construction-password-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.construction-password-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.construction-password-input:focus {
+  outline: none;
+  border-color: #fcd34d;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.construction-submit-btn {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: #fcd34d;
+  color: #111827;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.construction-submit-btn:hover {
+  background: #fbbf24;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(252, 211, 77, 0.3);
+}
+
+.construction-error {
+  color: #fca5a5;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.construction-error.show {
+  display: block;
+}
+
+.construction-blur-bg {
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+}
+
 /* Age Gate Modal */
 .age-gate {
   position: fixed;
